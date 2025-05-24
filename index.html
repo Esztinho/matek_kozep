@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Egyenletek - Kidolgozott példák</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 2rem;
+    line-height: 1.6;
+    background: #f9f9f9;
+    color: #222;
+  }
+  h2, h3 {
+    color: #004080;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.3rem 0;
+    color: #0066cc;
+  }
+  details {
+    background: #e8f0fe;
+    border: 1px solid #a0c0ff;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.2rem;
+  }
+  code, kbd, pre {
+    font-family: Consolas, monospace;
+    background: #eee;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+  }
+  .formula {
+    font-style: italic;
+    background: #f0f0f0;
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<h2>1. Egyenletek – Kidolgozott</h2>
+
+<h3>1.1. Az egyenlet fogalma</h3>
+<p>Egy <strong>egyenlet</strong> két algebrai kifejezés egyenlőségét fejezi ki, amelyben ismeretlent (változót) keresünk úgy, hogy az egyenlet igaz legyen.</p>
+<p><strong>Általános alak:</strong><br />
+<span class="formula">bal oldal = jobb oldal</span></p>
+<p><strong>Példa:</strong><br />
+<span class="formula">2x + 3 = 11</span></p>
+
+<h3>1.2. Egyenletek megoldhatósága, értelmezési tartomány</h3>
+<h4>1.2.1. Megoldhatóság</h4>
+<p>Egy egyenlet <strong>megoldható</strong>, ha létezik olyan változó-érték, amely kielégíti az egyenletet.<br />
+Lehet:</p>
+<ul>
+  <li>Egymegoldású</li>
+  <li>Több megoldású</li>
+  <li>Nincs megoldása (<em>ellentmondásos egyenlet</em>)</li>
+  <li>Minden valós szám megoldás (<em>azonosság</em>)</li>
+</ul>
+
+<h4>1.2.2. Értelmezési tartomány</h4>
+<p>= egy függvény vagy kifejezés értelmezési tartománya azt a legbővebb halmazt jelenti, ahol a függvény vagy kifejezés értelmezve van.</p>
+<p>Azon változóértékek halmaza, amelyre az egyenlet <strong>matematikailag értelmezhető</strong> (pl. nincs 0-val való osztás, negatív szám négyzetgyöke stb.)</p>
+<p><strong>Példa:</strong><br />
+<span class="formula">$$ \frac{1}{x - 2} = 5  ⇒  x ≠ 2 $$</span></p>
+<p>Egyenletek, egyenlőtlenségek megoldása előtt érdemes megvizsgálni azok értelmezési tartományát. Amit középiskolában mindenképp tudnod kell:
+<ul>
+  <li>Tört nevezőjében nem lehet nulla</li>
+  <li>Párosgyökjel alatt nem szerepelhet negatív kifejezés (= páros kitevőjű gyök alatt nem lehet negatív szám)</li>
+  <li>Logaritmus argumentumába csak pozitív szám kerülhet, a logaritmus alapja is csak pozitív lehet, és nem lehet egyenlő 1-gyel.</li>
+
+</ul>
+
+<p>Példák értelmezési tartományokra:</p>
+<p>\( \sqrt{x} \) kifejezés értelmezési tartomány a nem negatív valós számok halmaza, mert a negatív számoknak nincsen négyzetgyöke (mert bármely szám második hatványa pozitív szám). Ez igaz minden páros gyökre. Például az x = - 2-höz a függvény nem tud mit rendelni, mert nincs értelmezve a négyzetgyökvonás negatív számokra.</p>
+
+
+
+
+<h3>1.3. Egyenletmegoldás szorzattá alakítással</h3>
+<p>Ez a módszer a <strong>nullára hozott egyenlet</strong> szorzatok alakjára való hozásán alapul:</p>
+<p><span class="formula">ab = 0 ⇒ a = 0 vagy b = 0</span></p>
+
+<details>
+<summary>📌 Példa: \( x^2 - 5x = 0 \)</summary>
+<p>
+\[
+x^2 - 5x = 0 \\
+x(x - 5) = 0 \Rightarrow x = 0 \quad \text{vagy} \quad x = 5
+\]
+</p>
+</details>
+<h3>📘 Feladat: Szorzattá alakítás</h2>
+    <p><strong>Oldjuk meg az alábbi egyenletet:</strong></p>
+    <p><code>x * 2(x + 3) = 4(x - 1)(x + 3)</code></p>
+
+    <h3>🧠 Megoldás – nullára redukálás</h3>
+    <p>Mindkét oldalon szerepel az <code>(x + 3)</code> kifejezés, ezért érdemes nullára rendezni:</p>
+    <p><code>x * 2(x + 3) - 4(x - 1)(x + 3) = 0</code></p>
+    <p><strong>Kiemelhető közös tényező:</strong></p>
+    <p><code>(x + 3)[2x - 4(x - 1)] = 0</code></p>
+
+    <h3>📐 Bontsuk fel a zárójelet:</h3>
+    <p><code>2x - 4(x - 1) = 2x - 4x + 4 = -2x + 4</code></p>
+
+    <p>Így az egyenlet:</p>
+    <p><code>(x + 3)(-2x + 4) = 0</code></p>
+
+    <h3>🔍 Megoldás:</h3>
+    <ul>
+      <li><code>x + 3 = 0</code> → <strong>x = -3</strong></li>
+      <li><code>-2x + 4 = 0</code> → <strong>x = 2</strong></li>
+    </ul>
+
+    <p><strong>✅ Megoldás: Ennek az egyenletnek a 2 elsőfokú tényező miatt 2 gyöke van: 
+      x = -3 vagy x = 2</strong></p>
+<hr />
+
+<h3>1.4. Törtes egyenletek</h3>
+<p><p>Törtes egyenleteknél fontos az értelmezési tartomány megadása (nevező ≠ 0), majd közös nevezőre hozás után a nevezők elhagyása.</p></p>
+<p>Törtes egyenletek megoldása:</p>
+<ol>
+  <li>Értelmezési tartomány megadása! Tört nevezőjében ha van változó, írjuk fel a feltételeket, mert 0 -val történő osztást nem értelmezzük</li>
+  <li>Nevezők szorzattá alakítása, majd közös nevezőre hozás</li>
+  <li>Közös nevezővel való szorzás után oldjuk meg az egyenletet</li>
+  <li>Kapott értéket megvizsgáljuk, megfelel-e az értelmezési tartománynak!</li>
+</ol>
+<p><strong>Példa:</strong><br />
+<span class="formula">$$ \frac{1}{x} + \frac{2}{x+1} = 3  ⇒  x ≠ 0, -1 $$</span></p>
+
+<details>
+<summary>📌 Minta:\[
+      \frac{x^2 - 1}{3x + 3} = x - 5
+    \]</summary>
+
+<h3>1. Értelmezési tartomány megadása</h3>
+  <p>A nevező nem lehet nulla:</p>
+  <p>
+    \[
+      3x + 3 \neq 0 \implies x \neq -1
+    \]
+  </p>
+
+  <h3>2. Egyszerűsítés</h3>
+  <p>Az \(x^2 - 1\) kifejezés különbség négyzeteként írható fel:</p>
+  <p>
+    \[
+      x^2 - 1 = (x - 1)(x + 1)
+    \]
+  </p>
+  <p>A nevező:</p>
+  <p>
+    \[
+      3x + 3 = 3(x + 1)
+    \]
+  </p>
+  <p>Így az egyenlet:</p>
+  <p>
+    \[
+      \frac{(x - 1)(x + 1)}{3(x + 1)} = x - 5
+    \]
+  </p>
+
+  <h3>3. Egyszerűsítés</h3>
+  <p>\(x \neq -1\) miatt egyszerűsíthetjük a \(x + 1\) tényezőt:</p>
+  <p>
+    \[
+      \frac{x - 1}{3} = x - 5
+    \]
+  </p>
+
+  <h3>4. Megoldás</h3>
+  <p>Szorzunk mindkét oldalt 3-mal:</p>
+  <p>
+    \[
+      x - 1 = 3(x - 5)
+    \]
+  </p>
+  <p>Fejtsük ki a jobb oldalt:</p>
+  <p>
+    \[
+      x - 1 = 3x - 15
+    \]
+  </p>
+  <p>Vonjuk ki \(x\)-et mindkét oldalból:</p>
+  <p>
+    \[
+      -1 = 2x - 15
+    \]
+  </p>
+  <p>Adjunk 15-öt mindkét oldalhoz:</p>
+  <p>
+    \[
+      14 = 2x
+    \]
+  </p>
+  <p>Osszuk el 2-vel:</p>
+  <p>
+    \[
+      x = 7
+    \]
+  </p>
+
+  <h3>5. Ellenőrzés</h3>
+  <p>Az értelmezési tartomány szerint \(x \neq -1\), így \(x = 7\) megengedett.</p>
+
+  <h3>Végső megoldás:</h3>
+  <p>
+    <strong>\(x = 7\)</strong>
+  </p>
+
+
+</details>
+
+<h3>1.5. Egyenlőtlenségek (alapok)</h3>
+<p>A <strong>nem egyenlő</strong> kifejezések megoldása, ahol: <span class="formula">&lt;, &gt;, ≤, ≥</span></p>
+<p><strong>Példa:</strong><br />
+<span class="formula">2x - 5 > 1  ⇒  x > 3</span></p>
+<p><strong>Figyelem:</strong> negatív számmal való szorzás/osztás esetén az irány megfordul!</p>
+
+<hr />
+
+<h3>1.6. Abszolútértékes egyenletek</h3>
+<h4>Definíció:</h4>
+<pre>
+|a| = {
+  a,   ha a ≥ 0
+ -a,   ha a &lt; 0
+}
+</pre>
+<h4>Típusok:</h4>
+<ol>
+  <li><strong>Alap egyenlet:</strong><br />
+    <span class="formula">|x| = 5 ⇒ x = 5 vagy x = -5</span></li>
+  <li><strong>Összetettebb:</strong><br />
+    <span class="formula">|2x - 3| = 7 ⇒
+    { 2x - 3 = 7 ⇒ x = 5
+      2x - 3 = -7 ⇒ x = -2
+    }</span></li>
+</ol>
+
+<hr />
+
+<h3>1.7. Szöveges feladatok</h3>
+<p>Lépései:</p>
+<ol>
+  <li>Ismeretlen(ek) kijelölése</li>
+  <li>Egyenlet felállítása a szöveg alapján</li>
+  <li>Egyenlet megoldása</li>
+  <li>Értelmezés, ellenőrzés</li>
+</ol>
+<p><strong>Példa:</strong><br />
+„Egy szám kétszerese 8-cal több, mint a szám háromszorosa. Mi a szám?”</p>
+<p><strong>Megoldás:</strong><br />
+<span class="formula">2x = 3x + 8 ⇒ -x = 8 ⇒ x = -8</span></p>
+
+<hr />
+
+<h2>Gyakorló feladatok</h2>
+
+<h3>1. Törtes egyenlet</h3>
+<p><strong>Feladat:</strong><br />
+Oldd meg az alábbi egyenletet:</p>
+<p>$$ \frac{2}{x} + \frac{3}{x+1} = 5 $$</p>
+
+<details>
+<summary><strong>Megoldás</strong></summary>
+<p><strong>Értelmezési tartomány:</strong> x ≠ 0, -1</p>
+<p>Közös nevező: x(x+1)</p>
+<pre>
+2(x+1) + 3x = 5x(x+1)
+2x + 2 + 3x = 5x² + 5x
+5x + 2 = 5x² + 5x
+0 = 5x² - 2 ⇒ x² = 2/5 ⇒ x = ±√(2/5)
+</pre>
+<p><strong>Megoldás:</strong> x = ±√(2/5)</p>
+</details>
+
+<hr />
+
+<h3>2. Abszolútértékes egyenlet</h3>
+<p><strong>Feladat:</strong><br />
+Oldd meg:</p>
+<pre>|3x - 4| = 2x + 1</pre>
+
+<details>
+<summary><strong>Megoldás</strong></summary>
+<p>Vizsgáljuk a két esetet:</p>
+<ol>
+  <li>3x - 4 = 2x + 1 ⇒ x = 5</li>
+  <li>-(3x - 4) = 2x + 1 ⇒ -3x + 4 = 2x + 1 ⇒ -5x = -3 ⇒ x = 3/5</li>
+</ol>
+<p>Mindkét megoldást visszahelyettesítve:</p>
+<ul>
+  <li>x = 5: bal = jobb = 11 ✅</li>
+  <li>x = 3/5: bal = jobb = 1.6 ✅</li>
+</ul>
+<p><strong>Megoldás:</strong> x = 3/5, 5</p>
+</details>
+
+<hr />
+
+<h3>3. Szöveges feladat</h3>
+<p><strong>Feladat:</strong><br />
+Egy téglalap kerülete 42 cm. A hosszabb oldal kétszerese a rövidebb oldalnak csökkentve 3 cm-rel. Mekkora a téglalap két oldala?</p>
+
+<details>
+<summary><strong>Megoldás</strong></summary>
+<p>Legyen a rövidebb oldal <code>x</code>, akkor a hosszabb: <code>2x - 3</code></p>
+<p>Kerület képlete:</p>
+<pre>
+2(x + (2x - 3)) = 42
+2(3x - 3) = 42 ⇒ 6x - 6 = 42 ⇒ 6x = 48 ⇒ x = 8
+</pre>
+<p>Rövidebb oldal: 8 cm<br />
+Hosszabb oldal: 2 * 8 - 3 = 13 cm</p>
+<p><strong>Megoldás:</strong> 8 cm és 13 cm</p>
+</details>
+
+</body>
+</html>
