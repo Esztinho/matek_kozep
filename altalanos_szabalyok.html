@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Általános szabályok</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #2980b9;
+      padding-bottom: 0.3rem;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 1.5rem;
+    }
+    ul {
+      margin-left: 1.2rem;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .footer-link {
+      margin-top: 2rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>Általános szabályok</h1>
+
+  <section>
+    <h2>Nevezetes azonosságok</h2>
+    <ul>
+      <li><strong>Összeg négyzete:</strong> <code>(a + b)² = a² + 2ab + b²</code></li>
+      <li><strong>Különbség négyzete:</strong> <code>(a - b)² = a² - 2ab + b²</code></li>
+      <li><strong>Két négyzet különbsége:</strong> <code>a² - b² = (a - b)(a + b)</code></li>
+    </ul>
+  </section>
+
+  <section>
+  <h2>Példák a nevezetes azonosságok alkalmazására</h2>
+  <ul>
+    <li><strong>Összeg négyzete:</strong> Számoljuk ki az <code>(3 + 5)²</code> értékét!
+      <br />
+      Alkalmazva: <code>(3 + 5)² = 3² + 2·3·5 + 5² = 9 + 30 + 25 = 64</code>
+    </li>
+    <li><strong>Különbség négyzete:</strong> Számoljuk ki az <code>(7 - 2)²</code> értékét!
+      <br />
+      Alkalmazva: <code>(7 - 2)² = 7² - 2·7·2 + 2² = 49 - 28 + 4 = 25</code>
+    </li>
+    <li><strong>Két négyzet különbsége:</strong> Számoljuk ki az <code>9² - 4²</code> értékét!
+      <br />
+      Alkalmazva: <code>9² - 4² = (9 - 4)(9 + 4) = 5 · 13 = 65</code>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Értelmezési tartomány vizsgálata</h2>
+  <p>Az egyenletek és egyenlőtlenségek megoldása előtt fontos megvizsgálni azok <strong>értelmezési tartományát</strong>. Középiskolai ismeretek alapján a legfontosabb szabályok a következők:</p>
+  <ul>
+    <li><strong>Tört nevezője nem lehet nulla:</strong> A tört értelmezési tartománya kizárja azokat az értékeket, amelyeknél a nevező nullává válik.</li>
+    <li><strong>Páros gyök alatt nem szerepelhet negatív kifejezés:</strong> A páros kitevőjű gyök (pl. négyzetgyök) csak nemnegatív számok alatt értelmezett, tehát a gyökjel alatti kifejezés nem lehet negatív.</li>
+    <li><strong>Logaritmus argumentuma és alapja:</strong> A logaritmus argumentuma kizárólag pozitív szám lehet. Emellett a logaritmus alapja is pozitív kell, hogy legyen, és nem egyenlő 1-gyel.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Egyszerű egyenlet megoldása szorzattá alakítással</h2>
+  <p>Oldjuk meg az <code>x^2 - 5 = 0</code> egyenletet lépésről lépésre:</p>
+  <ol>
+    <li><strong>Rendezzük nullára az egyenletet:</strong><br>
+      <code>x² - 25 = 0</code>
+    </li>
+    <li><strong>Szorzattá alakítás (két négyzet különbsége):<br>
+      </strong>Használjuk a nevezetes azonosságot: <code>a² - b² = (a - b)(a + b)</code>, ahol <code>a = x</code>, <code>b = 5</code>.<br>
+      Így: <code>(x - 5)(x + 5) = 0</code>
+    </li>
+    <li><strong>Nullára egyenlőség:</strong><br>
+      Az egyenlet akkor igaz, ha valamelyik tényező nulla:<br>
+      <code>x - 5 = 0</code> vagy <code>x + 5 = 0</code>
+    </li>
+    <li><strong>Megoldások:</strong><br>
+      <code>x = 5</code> vagy <code>x = -5</code>
+    </li>
+  </ol>
+  <p><em>Tehát az egyenlet megoldásai:</em> <code>x = ±5</code>.</p>
+</section>
+<section>
+  <h2>Egyenlet megoldása gyökjel alatt szereplő kifejezéssel</h2>
+  <p>Oldjuk meg az <code>√(x - 3) = √(2 - x)</code> egyenletet, figyelembe véve az értelmezési tartományt!</p>
+
+  <h3>Értelmezési tartomány:</h3>
+  <ul>
+    <li><code>x - 3 ≥ 0</code> &rarr; <code>x ≥ 3</code></li>
+    <li><code>2 - x ≥ 0</code> &rarr; <code>x ≤ 2</code></li>
+  </ul>
+  <p><strong>Az értelmezési tartomány tehát: </strong><code>3 ≤ x ≤ 2</code>, ami üres halmaz, tehát nincs megoldás.</p>
+
+  
+
+ 
+</section>
+<section>
+  <h2>Közös nevezőre hozás</h2>
+  <p>Két vagy több tört összeadásához vagy kivonásához szükséges, hogy nevezőik azonosak legyenek. Ezt úgy érjük el, hogy a törtek nevezőit közös nevezőre hozzuk.</p>
+  <p><strong>Közös nevező</strong> alatt a nevezők legkisebb közös többszörösét értjük.</p>
+  <h3>Példa</h3>
+  <p>Legyen két tört:</p>
+  <p style="font-family: monospace; text-align: center;">
+    <span style="display: inline-block; text-align: center;">
+      <span>a</span><br>
+      <span style="border-top: 1px solid black; display: block;">3</span>
+    </span>
+    és
+    <span style="display: inline-block; text-align: center; margin-left: 1em;">
+      <span>b</span><br>
+      <span style="border-top: 1px solid black; display: block;">4</span>
+    </span>
+  </p>
+  <p>A nevezők 3 és 4 legkisebb közös többszöröse 12, tehát a közös nevező 12.</p>
+  <p>Átalakítva:</p>
+  <p style="font-family: monospace; text-align: center;">
+    <span style="display: inline-block; text-align: center;">
+      <span>a × 4</span><br>
+      <span style="border-top: 1px solid black; display: block;">12</span>
+    </span>
+    és
+    <span style="display: inline-block; text-align: center; margin-left: 1em;">
+      <span>b × 3</span><br>
+      <span style="border-top: 1px solid black; display: block;">12</span>
+    </span>
+  </p>
+  <p>Így már összeadhatók a törtek:</p>
+  <p style="font-family: monospace; text-align: center;">
+    <span style="display: inline-block; text-align: center;">
+      <span>4a + 3b</span><br>
+      <span style="border-top: 1px solid black; display: block;">12</span>
+    </span>
+  </p>
+</section>
+
+
+
+
+
+  <a class="footer-link" href="index.html">&larr; Vissza a főoldalra</a>
+</body>
+</html>
