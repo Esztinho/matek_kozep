@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8" />
+    <title>Függvények 9. osztály</title>
+    <!-- Math.js könyvtár importálása -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11/dist/math.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #2E8B57;
+        }
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Függvények 9. osztály</h1>
+    <section>
+        <h2>Értelmezési tartomány (Domain)</h2>
+        <p><strong>Definíció:</strong> Azoknak az x értékeknek a halmaza, amelyekre a függvény értelmezett.</p>
+        <p><strong>Példa:</strong> Ha a függvény <em>f(x) = 1 / (x - 3)</em>, akkor az értelmezési tartomány:</p>
+        <ul>
+            <li>x ≠ 3</li>
+            <li>Tehát az összes többi valós szám, kivéve 3</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Értékkészlet </h2>
+        <p><strong>Definíció:</strong> Azoknak az y értékeknek a halmaza, amelyeket a függvény felvesz a megadott értelmezési tartományban.</p>
+        <p><strong>Példa:</strong> Ha a függvény <em>f(x) = x²</em> értelmezett minden valós x-re, akkor az értékkészlet:</p>
+        <ul>
+            <li>y ≥ 0</li>
+            <li>Tehát az összes nem negatív valós szám</li>
+        </ul>
+    </section>
+
+    <section id="linear-fuggveny">
+        <h2>Lineáris függvény</h2>
+        <p>Általános alak: <em>f(x) = mx + b</em></p>
+        <p>Példa: <em>f(x) = 2x + 1</em></p>
+        <canvas id="linearCanvas" width="400" height="300"></canvas>
+        <script>
+            const canvas = document.getElementById('linearCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function drawLinear() {
+                ctx.clearRect(0, 0, 400, 300);
+                // Tengelyek
+                ctx.strokeStyle = '#000';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(50, 250);
+                ctx.lineTo(350, 250);
+                ctx.moveTo(50, 50);
+                ctx.lineTo(50, 250);
+                ctx.stroke();
+
+                // Tengelyek címek
+                ctx.font = '12px Arial';
+                ctx.fillText('x', 360, 265);
+                ctx.fillText('f(x)', 20, 40);
+
+                // Görbe paraméterek
+                const m = 2; // meredekség
+                const b = 1; // y-érték
+
+                // Pontok
+                ctx.strokeStyle = 'blue';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+
+                for(let x = -5; x <= 5; x += 0.1) {
+                    const y = m * x + b;
+                    // átalakítás a pixel koordinátákhoz
+                    const px = 50 + (x + 5) * 30; // x tengely skálázása
+                    const py = 250 - (y + 5) * 30; // y tengely skálázása
+                    if (x === -5) {
+                        ctx.moveTo(px, py);
+                    } else {
+                        ctx.lineTo(px, py);
+                    }
+                }
+                ctx.stroke();
+            }
+
+            drawLinear();
+        </script>
+    </section>
+
+    <section id="abszolut-fuggveny">
+        <h2>Abszolútérték függvény</h2>
+        <p>Általános alak: <em>f(x) = |x|</em></p>
+        <p>Példa: <em>f(x) = |x - 2|</em></p>
+        <canvas id="absCanvas" width="400" height="300"></canvas>
+        <script>
+            const absCanvas = document.getElementById('absCanvas');
+            const absCtx = absCanvas.getContext('2d');
+
+            function drawAbsolute() {
+                absCtx.clearRect(0, 0, 400, 300);
+                // Tengelyek
+                absCtx.strokeStyle = '#000';
+                absCtx.lineWidth = 1;
+                absCtx.beginPath();
+                absCtx.moveTo(50, 250);
+                absCtx.lineTo(350, 250);
+                absCtx.moveTo(50, 50);
+                absCtx.lineTo(50, 250);
+                absCtx.stroke();
+
+                absCtx.font = '12px Arial';
+                absCtx.fillText('x', 360, 265);
+                absCtx.fillText('f(x)', 20, 40);
+
+                // Függvény rajzolása
+                absCtx.strokeStyle = 'red';
+                absCtx.lineWidth = 2;
+                absCtx.beginPath();
+
+                for(let x = -5; x <= 5; x += 0.1) {
+                    const y = Math.abs(x - 2);
+                    const px = 50 + (x + 5) * 30;
+                    const py = 250 - (y + 0) * 30; // mivel abs, a minimum 0
+                    if (x === -5) {
+                        absCtx.moveTo(px, py);
+                    } else {
+                        absCtx.lineTo(px, py);
+                    }
+                }
+                absCtx.stroke();
+            }
+
+            drawAbsolute();
+        </script>
+    </section>
+
+    <section id="masodfoku-fuggveny">
+        <h2>Másodfokú (negyedik) függvény</h2>
+        <p>Általános alak: <em>f(x) = ax² + bx + c</em></p>
+        <p>Példa: <em>f(x) = x² - 4x + 3</em></p>
+        <canvas id="quadCanvas" width="400" height="300"></canvas>
+        <script>
+            const quadCanvas = document.getElementById('quadCanvas');
+            const quadCtx = quadCanvas.getContext('2d');
+
+            function drawQuadratic() {
+                quadCtx.clearRect(0, 0, 400, 300);
+                // Tengelyek
+                quadCtx.strokeStyle = '#000';
+                quadCtx.lineWidth = 1;
+                quadCtx.beginPath();
+                quadCtx.moveTo(50, 250);
+                quadCtx.lineTo(350, 250);
+                quadCtx.moveTo(50, 50);
+                quadCtx.lineTo(50, 250);
+                quadCtx.stroke();
+
+                quadCtx.font = '12px Arial';
+                quadCtx.fillText('x', 360, 265);
+                quadCtx.fillText('f(x)', 20, 40);
+
+                // Parabola paraméterek
+                const a = 1;
+                const b = -4;
+                const c = 3;
+
+                // Rajzolás
+                quadCtx.strokeStyle = 'green';
+                quadCtx.lineWidth = 2;
+                quadCtx.beginPath();
+
+                for(let x = -2; x <= 6; x += 0.1) {
+                    const y = a * x * x + b * x + c;
+                    const px = 50 + (x + 2) * 40;
+                    const py = 250 - (y + 2) * 40;
+                    if (x === -2) {
+                        quadCtx.moveTo(px, py);
+                    } else {
+                        quadCtx.lineTo(px, py);
+                    }
+                }
+
+                quadCtx.stroke();
+            }
+
+            drawQuadratic();
+        </script>
+    </section>
+
+    <section id="gyokfuggveny">
+        <h2>Gyökfüggvény (négyzetgyök)</h2>
+        <p>Általános alak: <em>f(x) = √x</em></p>
+        <p>Példa: <em>f(x) = √x</em></p>
+        <canvas id="sqrtCanvas" width="400" height="300"></canvas>
+        <script>
+            const sqrtCanvas = document.getElementById('sqrtCanvas');
+            const sqrtCtx = sqrtCanvas.getContext('2d');
+
+            function drawSqrt() {
+                sqrtCtx.clearRect(0, 0, 400, 300);
+                // Tengelyek
+                sqrtCtx.strokeStyle = '#000';
+                sqrtCtx.lineWidth = 1;
+                sqrtCtx.beginPath();
+                sqrtCtx.moveTo(50, 250);
+                sqrtCtx.lineTo(350, 250);
+                sqrtCtx.moveTo(50, 50);
+                sqrtCtx.lineTo(50, 250);
+                sqrtCtx.stroke();
+
+                sqrtCtx.font = '12px Arial';
+                sqrtCtx.fillText('x', 360, 265);
+                sqrtCtx.fillText('f(x)', 20, 40);
+
+                // Rajzolás
+                sqrtCtx.strokeStyle = 'purple';
+                sqrtCtx.lineWidth = 2;
+                sqrtCtx.beginPath();
+
+                for(let x = 0; x <= 9; x += 0.1) {
+                    const y = Math.sqrt(x);
+                    const px = 50 + x * 30;
+                    const py = 250 - y * 30;
+                    if (x === 0) {
+                        sqrtCtx.moveTo(px, py);
+                    } else {
+                        sqrtCtx.lineTo(px, py);
+                    }
+                }
+
+                sqrtCtx.stroke();
+            }
+
+            drawSqrt();
+        </script>
+    </section>
+
+    <section id="fuggveny-transzformaciok">
+        <h2>Függvénytranszformációk</h2>
+        <p>Mutatjuk az átalakításokat például egy lineáris függvényen:</p>
+        <p>Alapfüggvény: f(x) = x</p>
+        <p>Eltolás jobbra 2 egység: f(x) = (x - 2)</p>
+        <p>Nyújtás vízszintesen kétszeresére: f(x) = 2x</p>
+        <canvas id="transformationCanvas" width="400" height="300"></canvas>
+        <script>
+            const transCanvas = document.getElementById('transformationCanvas');
+            const transCtx = transCanvas.getContext('2d');
+
+            function drawTransformations() {
+                transCtx.clearRect(0, 0, 400, 300);
+                // Tengelyek
+                transCtx.strokeStyle = '#000';
+                transCtx.lineWidth = 1;
+                transCtx.beginPath();
+                transCtx.moveTo(50, 250);
+                transCtx.lineTo(350, 250);
+                transCtx.moveTo(50, 50);
+                transCtx.lineTo(50, 250);
+                transCtx.stroke();
+
+                transCtx.font = '12px Arial';
+                transCtx.fillText('x', 360, 265);
+                transCtx.fillText('f(x)', 20, 40);
+
+                // Alap függvény: f(x) = x
+                transCtx.strokeStyle = 'blue';
+                transCtx.lineWidth = 2;
+                transCtx.beginPath();
+                for(let x = -5; x <= 5; x += 0.1) {
+                    const y = x;
+                    const px = 50 + (x + 5) * 30;
+                    const py = 250 - (y + 5) * 30;
+                    if (x === -5) {
+                        transCtx.moveTo(px, py);
+                    } else {
+                        transCtx.lineTo(px, py);
+                    }
+                }
+                transCtx.stroke();
+
+                // Eltolás jobbra 2 egység: f(x) = (x - 2)
+                transCtx.strokeStyle = 'red';
+                transCtx.lineWidth = 2;
+                transCtx.beginPath();
+                for(let x = -5; x <= 5; x += 0.1) {
+                    const y = x - 2;
+                    const px = 50 + (x + 5) * 30;
+                    const py = 250 - (y + 5) * 30;
+                    if (x === -5) {
+                        transCtx.moveTo(px, py);
+                    } else {
+                        transCtx.lineTo(px, py);
+                    }
+                }
+                transCtx.stroke();
+
+                // Nyújtás vízszintesen kétszeresére: f(x) = 2x
+                transCtx.strokeStyle = 'green';
+                transCtx.lineWidth = 2;
+                transCtx.beginPath();
+                for(let x = -5; x <= 5; x += 0.1) {
+                    const y = 2 * x;
+                    const px = 50 + (x + 5) * 30;
+                    const py = 250 - (y + 5) * 30;
+                    if (x === -5) {
+                        transCtx.moveTo(px, py);
+                    } else {
+                        transCtx.lineTo(px, py);
+                    }
+                }
+                transCtx.stroke();
+            }
+
+            drawTransformations();
+        </script>
+    </section>
+    <section>
+    <h2>Függvények jellemzői</h2>
+
+    <h3>1. Értelmezési tartomány</h3>
+    <p>Azoknak az x értékeknek a halmaza, amelyekre a függvény értelmezett. Jelölése: Df .</p>
+
+    <h3>2. Értékkészlet</h3>
+    <p>Az y értékek halmaza, amit a függvény felvesz a megadott értelmezési tartományban. Jelölése: Rf.</p>
+
+    <h3>3. Monotonitás (A FÜGGVÉNY MENETE)</h3>
+    <p>
+        Beszélhetünk monotonitásról és szigorú monotonitásról.
+        <p><strong>Monoton növekedés:</strong>
+Ha az értékek (f(x)) mindig nagyobbak <strong>vagy egyenlők</strong> lesznek, amikor az x értékek növekednek, akkor mondjuk, hogy a függvény monoton növekszik.
+<em>f(x1) ≤ f(x2).</em>
+<br>
+<strong>Szigorúan monoton növekedés:</strong>
+Ha az értékek mindig <strong> csak növekednek (soha nem maradnak egyenlők)</strong>, amikor az x értékek növekednek, akkor szigorúan növekvő a függvény.
+<em>f(x1) < f(x2).</em>
+</p>
+    </p>
+
+    <h3>4. Szélsőértékek</h3>
+    <p>
+        - Egy függvény szélsőértékhelye az az x érték, amelynél a függvény értéke a legnagyobb vagy
+legkisebb egy adott intervallumon.
+
+
+    <h3>5. Zérushelyek (gyökök)</h3>
+    <p>Az x értékek, ahol a függvény értéke 0, azaz f(x) = 0. Ezek a függvény metszei az x-tengellyel.</p>
+</section>
+
+</body>
+</html>
